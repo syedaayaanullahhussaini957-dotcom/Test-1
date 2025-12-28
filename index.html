@@ -1,53 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Drag Papers ❤️</title>
-
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Short+Stack&family=Homemade+Apple&display=swap">
-  <link rel="stylesheet" href="./style.css">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>For My Girl ❤️</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Short+Stack&family=Homemade+Apple&display=swap'>
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 </head>
 <body>
 
-<div class="paper heart"></div>
+<div id="paper-wrapper">
+    <div class="paper heart">
+        <button id="heartButton">❤️ Click Me</button>
+    </div>
 
-<div class="paper image">
-  <p>and I fallen in</p>
-  <p>Love with You 😍</p>
-  <img src="images/1.jpg">
+    <div class="paper image">
+        <p>and I fallen in</p>
+        <p>Love with You 😍 </p>
+        <img src="images/1.jpg" />
+    </div>
+
+    <div class="paper image">
+        <img src="images/2.jpeg" />
+    </div>
+
+    <div class="paper image">
+        <p>How can be </p>
+        <p>someone so cute 💗 </p>
+        <img src="images/3.jpg" />
+    </div>
+
+    <div class="paper red">
+        <p class="p1">also My Favorite</p>
+        <p class="p2">Person 🤗</p>
+    </div>
+
+    <div class="paper">
+        <p class="p1">You are Cute ❣</p>
+        <p class="p1">Amazing and Crazy too <span style="color: red !important;">❤️</span></p>
+    </div>
+
+    <div class="paper">
+        <p class="p1">Drag the papers to move!</p>
+    </div>
 </div>
 
-<div class="paper image">
-  <img src="images/2.jpeg">
-</div>
-
-<div class="paper image">
-  <p>How can be</p>
-  <p>someone so cute 💗</p>
-  <img src="images/3.jpg">
-</div>
-
-<div class="paper red">
-  <p class="p1">also My Favorite</p>
-  <p class="p2">Person 🤗</p>
-</div>
-
-<div class="paper">
-  <p class="p1">You are Cute ❣</p>
-  <p class="p1">Amazing and Crazy too ❤️</p>
-</div>
-
-<!-- ✅ ONLY ONE LAST PAPER -->
-<div class="paper last-paper">
-  <p>My last message 💙</p>
-  
-  <!-- ❤️ HEART BUTTON -->
-  <div id="heartButton">
-    ❤️
-    <span>Touch my heart Afshan</span>
-  </div>
+<div id="birthday-section" class="hidden">
+    <div id="timer-header">
+        <p>THE WORLD GOT LUCKIER SINCE</p>
+        <div id="timer">
+            <span id="days">0</span> DAYS 
+            <span id="hours">0</span> HOURS
+            <span id="minutes">0</span> MIN
+        </div>
+    </div>
+    <canvas id="garden"></canvas>
+    <div id="birthday-msg">
+        Happy Birthday My Beautiful!<br>
+        I'll give you all the love I can! ❤️
+    </div>
 </div>
 
 <script src="script.js"></script>
