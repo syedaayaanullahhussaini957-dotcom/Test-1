@@ -5,24 +5,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
   background-size: 1000px;
-  background-position: center;
-  overflow: hidden;
+  background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
+  background-position: center center;
   touch-action: none;
+  overflow: hidden;
 }
 
 .paper {
   background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
   background-size: 500px;
+  background-position: center center;
   padding: 20px 100px;
-  position: absolute;
-  box-shadow: 1px 15px 20px rgba(0,0,0,0.5);
   transform: rotateZ(-5deg);
+  box-shadow: 1px 15px 20px rgba(0,0,0,0.5);
+  position: absolute;
 }
-
-.paper.image { padding: 10px; }
-.paper.image p { font-size: 30px; }
 
 .paper.heart {
   width: 200px;
@@ -31,21 +29,30 @@ body {
   border-radius: 50%;
 }
 
-.paper.heart::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png");
-  background-size: 150px;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.6;
+.paper.image {
+  padding: 10px;
+}
+
+.paper.image p {
+  font-size: 30px;
 }
 
 img {
   max-height: 200px;
   width: 100%;
   user-select: none;
+}
+
+.paper.heart::after {
+  content: "";
+  background-image: url('https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png');
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.6;
 }
 
 p {
@@ -57,26 +64,35 @@ p {
 }
 
 /* ❤️ HEART BUTTON */
-#heartBtn {
+#heartButton {
   position: absolute;
-  bottom: 35%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 0; /* IMPORTANT: stays behind papers */
-
+  width: 200px;
+  height: 200px;
   background: #ff4d6d;
-  color: white;
-  border: none;
-  padding: 18px 30px;
-  font-size: 22px;
-  font-family: 'Homemade Apple', cursive;
-  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 
-  clip-path: path("M12 21s-8-6.2-8-11.5S7.3 2 12 7.2 20 2 20 9.5 12 21 12 21z");
-  animation: blink 1.2s infinite;
+  font-family: 'Zeyada';
+  color: white;
+  font-size: 28px;
+
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  animation: beat 1.2s infinite;
+
+  z-index: 0;
+  pointer-events: none;
 }
 
-@keyframes blink {
-  0%,100% { transform: translateX(-50%) scale(1); }
-  50% { transform: translateX(-50%) scale(1.1); }
+#heartButton span {
+  font-size: 22px;
+  margin-top: 8px;
+}
+
+@keyframes beat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
