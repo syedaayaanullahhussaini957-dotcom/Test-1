@@ -13,11 +13,6 @@ class Paper {
     const start = (x, y) => {
       this.holdingPaper = true;
       paper.style.zIndex = highestZ++;
-
-      if (paper.classList.contains("last-paper")) {
-        document.getElementById("finalBtn").style.display = "block";
-      }
-
       this.prevX = x;
       this.prevY = y;
     };
@@ -66,9 +61,7 @@ document.querySelectorAll(".paper").forEach(paper => {
   new Paper().init(paper);
 });
 
-// ❤️ Button action
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("finalBtn").onclick = () => {
-    alert("I Love You Forever ❤️");
-  };
-});
+// ❤️ BUTTON ACTION
+document.getElementById("finalBtn").onclick = () => {
+  alert("I Love You Forever ❤️");
+};
