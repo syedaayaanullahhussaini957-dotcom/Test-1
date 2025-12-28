@@ -15,18 +15,14 @@ class Paper {
     const start = (x, y) => {
       this.holdingPaper = true;
       paper.style.zIndex = highestZ++;
-      this.startX = x;
-      this.startY = y;
       this.prevX = x;
       this.prevY = y;
     };
 
     const move = (x, y) => {
       if (!this.holdingPaper) return;
-      const dx = x - this.prevX;
-      const dy = y - this.prevY;
-      this.currentX += dx;
-      this.currentY += dy;
+      this.currentX += x - this.prevX;
+      this.currentY += y - this.prevY;
       this.prevX = x;
       this.prevY = y;
 
@@ -56,4 +52,14 @@ class Paper {
 
 document.querySelectorAll(".paper").forEach(paper => {
   new Paper().init(paper);
+});
+
+/* ❤️ PLACE HEART EXACTLY BEHIND LAST PAPER */
+window.addEventListener("load", () => {
+  const lastPaper = document.querySelector(".last-paper");
+  const heart = document.getElementById("heartButton");
+
+  const r = lastPaper.getBoundingClientRect();
+  heart.style.left = (r.left + r.width / 2 - 100) + "px";
+  heart.style.top = (r.top + r.height / 2 - 100) + "px";
 });
