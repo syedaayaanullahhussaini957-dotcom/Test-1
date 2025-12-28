@@ -54,28 +54,32 @@ document.querySelectorAll(".paper").forEach(paper => {
   new Paper().init(paper);
 });
 
-/* ❤️ PLACE HEART EXACTLY BEHIND LAST PAPER */
-window.addEventListener("load", () => {
-  const lastPaper = document.querySelector(".last-paper");
-  const heart = document.getElementById("heartButton");
-
-  const r = lastPaper.getBoundingClientRect();
-  heart.style.left = (r.left + r.width / 2 - 100) + "px";
-  heart.style.top = (r.top + r.height / 2 - 100) + "px";
-});
-// ❤️ SHOW HEART ONLY AFTER LAST PAPER MOVES
+/* ❤️ HEART LOGIC – FINAL & STABLE */
 const lastPaper = document.querySelector(".last-paper");
 const heart = document.getElementById("heartButton");
 
 let heartShown = false;
 
-lastPaper.addEventListener("mousedown", showHeart);
-lastPaper.addEventListener("touchstart", showHeart);
+// place heart exactly under last paper
+function placeHeart() {
+  const r = lastPaper.getBoundingClientRect();
+  heart.style.left = (r.left + r.width / 2 - 100) + "px";
+  heart.style.top  = (r.top  + r.height / 2 - 100) + "px";
+}
 
+// show heart only after drag
 function showHeart() {
   if (heartShown) return;
   heartShown = true;
 
+  placeHeart();
   heart.style.opacity = "1";
   heart.style.pointerEvents = "auto";
+  heart.style.zIndex = highestZ - 1; // just below last paper
 }
+
+// desktop
+lastPaper.addEventListener("mousedown", showHeart);
+
+// mobile
+lastPaper.addEventListener("touchstart", showHeart);
