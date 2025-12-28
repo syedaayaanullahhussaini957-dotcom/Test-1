@@ -29,9 +29,13 @@ body {
 }
 
 .paper.heart {
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
+  padding: 0;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .paper.heart::after {
@@ -61,10 +65,10 @@ p {
 
 /* ❤️ BUTTON */
 #finalBtn {
-  display: none;
-  margin-top: 20px;
-  padding: 12px 25px;
-  font-size: 20px;
+  position: relative;
+  z-index: 2;
+  padding: 12px 22px;
+  font-size: 18px;
   border: none;
   border-radius: 10px;
   background: crimson;
