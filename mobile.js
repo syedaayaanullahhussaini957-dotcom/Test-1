@@ -1,26 +1,30 @@
-papers.forEach(paper => {
-  let x = 0, y = 0, prevX = 0, prevY = 0, holding = false;
+const papersMobile = document.querySelectorAll(".paper");
 
-  paper.addEventListener("touchstart", e => {
-    holding = true;
-    paper.style.zIndex = highestZ++;
-    prevX = e.touches[0].clientX;
-    prevY = e.touches[0].clientY;
+papersMobile.forEach(paper => {
+  paper.addEventListener("touchstart", (e) => {
+    activePaper = paper;
+    const touch = e.touches[0];
+    offsetX = touch.clientX - paper.offsetLeft;
+    offsetY = touch.clientY - paper.offsetTop;
+
+    if (paper === lastPaper) {
+      lastMoved = true;
+    }
   });
+});
 
-  document.addEventListener("touchmove", e => {
-    if (!holding) return;
-    e.preventDefault();
-    x += e.touches[0].clientX - prevX;
-    y += e.touches[0].clientY - prevY;
-    prevX = e.touches[0].clientX;
-    prevY = e.touches[0].clientY;
-    paper.style.transform = `translate(${x}px, ${y}px)`;
-  }, { passive:false });
+document.addEventListener("touchmove", (e) => {
+  if (!activePaper) return;
 
-  document.addEventListener("touchend", () => {
-    if (holding) movedCount++;
-    holding = false;
-    checkHeart();
-  });
+  const touch = e.touches[0];
+  activePaper.style.left = touch.clientX - offsetX + "px";
+  activePaper.style.top = touch.clientY - offsetY + "px";
+});
+
+document.addEventListener("touchend", () => {
+  activePaper = null;
+
+  if (lastMoved) {
+    finalHeart.classList.add("show");
+  }
 });
