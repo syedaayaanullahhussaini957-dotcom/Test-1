@@ -9,6 +9,7 @@ class Paper {
   rotation = Math.random() * 30 - 15;
 
   init(paper) {
+
     const start = (x, y) => {
       this.holdingPaper = true;
       paper.style.zIndex = highestZ++;
@@ -18,6 +19,7 @@ class Paper {
 
     const move = (x, y) => {
       if (!this.holdingPaper) return;
+
       this.currentX += x - this.prevX;
       this.currentY += y - this.prevY;
       this.prevX = x;
@@ -51,19 +53,14 @@ document.querySelectorAll(".paper").forEach(paper => {
   new Paper().init(paper);
 });
 
-// ❤️ HEART REVEAL
+/* ❤️ HEART SHOW LOGIC */
 const lastPaper = document.querySelector(".last-paper");
 const heart = document.getElementById("heartButton");
 
-let shown = false;
-
-function revealHeart() {
-  if (shown) return;
-  shown = true;
-
+function showHeart() {
   heart.style.opacity = "1";
   heart.style.pointerEvents = "auto";
 }
 
-lastPaper.addEventListener("mousedown", revealHeart);
-lastPaper.addEventListener("touchstart", revealHeart);
+lastPaper.addEventListener("mousedown", showHeart);
+lastPaper.addEventListener("touchstart", showHeart);
