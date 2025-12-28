@@ -87,6 +87,26 @@ function checkAllMoved() {
     heart.classList.add("show");
   }
 }
+const finalHeart = document.getElementById("finalHeart");
+const papers = document.querySelectorAll(".paper");
+
+function checkPapersMoved() {
+  let moved = 0;
+
+  papers.forEach(paper => {
+    const t = paper.style.transform;
+    if (t && t.includes("translate")) {
+      moved++;
+    }
+  });
+
+  if (moved === papers.length) {
+    finalHeart.classList.add("show");
+  }
+}
+
+document.addEventListener("mouseup", checkPapersMoved);
+document.addEventListener("touchend", checkPapersMoved);
 
 document.addEventListener("mouseup", checkAllMoved);
 document.addEventListener("touchend", checkAllMoved);
