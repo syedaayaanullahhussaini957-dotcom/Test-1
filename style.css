@@ -83,7 +83,7 @@ p {
   box-shadow: 0 15px 30px rgba(0,0,0,0.4);
   animation: beat 1.2s infinite;
 
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
 
   opacity: 0;              /* HIDDEN INITIALLY */
