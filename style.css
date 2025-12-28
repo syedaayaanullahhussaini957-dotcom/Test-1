@@ -1,47 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
 
-
-
-
 body {
   height: 100vh;
+  margin: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
-
-  background-size: 1000px;
+  align-items: center;
   background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
-  background-position: center center;
-  touch-action: none;
+  background-size: 1000px;
   overflow: hidden;
+  touch-action: none;
 }
 
 .paper {
-  background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
-  background-size: 500px;
-  background-position: center center;
-  padding: 20px 100px;
-/*  min-width: 800px; */
-  
-  transform: rotateZ(-5deg);
-  box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
-  
   position: absolute;
+  background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg");
+  background-size: 500px;
+  padding: 20px 100px;
+  box-shadow: 1px 15px 20px rgba(0,0,0,0.5);
+  transform: rotate(-5deg);
 }
+
+.paper.image { padding: 10px; }
+.paper.image p { font-size: 30px; }
 
 .paper.heart {
-  position: relative;
   width: 200px;
   height: 200px;
-  padding: 0;
   border-radius: 50%;
+  padding: 0;
 }
 
-.paper.image {
-  padding: 10px;
-}
-.paper.image p {
-  font-size: 30px;
+.paper.heart::after {
+  content: "";
+  background-image: url("https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 150px;
+  position: absolute;
+  inset: 0;
+  opacity: 0.6;
 }
 
 img {
@@ -50,99 +48,47 @@ img {
   user-select: none;
 }
 
-.paper.heart::after {
-  content: "";
-  background-image: url('https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png');
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-size: 150px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 0.6;
-}
-
 p {
   font-family: 'Zeyada';
   font-size: 50px;
   color: rgb(0,0,100);
   opacity: 0.75;
   user-select: none;
-  
-  // filter: drop-shadow(2px 1.5px 1px rgba(0,0,105,0.9));
 }
+
+/* ❤️ FINAL HEART BUTTON */
 #finalHeart {
   position: fixed;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-#finalHeart.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-#heartBtn {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  border: none;
-  background: radial-gradient(circle, #ff4d6d, #ff0033);
-  color: white;
-  font-size: 1.2rem;
-  font-family: 'Zeyada';
-  cursor: pointer;
-  box-shadow: 0 0 30px rgba(255,0,80,0.7);
-  animation: blink 1.2s infinite;
-}
-
-@keyframes blink {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.6; }
-  100% { transform: scale(1); opacity: 1; }
-}
-#finalHeart {
-  position: fixed;
-  bottom: 40px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%) scale(0);
+  width: 130px;
+  height: 130px;
   background: #ff4d6d;
-  color: white;
-  width: 120px;
-  height: 120px;
   border-radius: 50%;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: 'Zeyada';
-  font-size: 28px;
+  font-size: 32px;
   text-align: center;
-  cursor: pointer;
-  box-shadow: 0 0 30px rgba(255,77,109,0.8);
-  animation: blink 1.5s infinite;
+  z-index: 0;
+  animation: pulse 1.5s infinite;
   transition: transform 0.6s ease;
-  z-index: 9999;
 }
 
 #finalHeart span {
   font-size: 14px;
-  margin-top: 5px;
 }
 
 #finalHeart.show {
   transform: translateX(-50%) scale(1);
 }
 
-@keyframes blink {
+@keyframes pulse {
   0% { box-shadow: 0 0 10px #ff4d6d; }
-  50% { box-shadow: 0 0 35px #ff99aa; }
+  50% { box-shadow: 0 0 35px #ff9aa9; }
   100% { box-shadow: 0 0 10px #ff4d6d; }
 }
