@@ -5,6 +5,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+
   background-size: 1000px;
   background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
   background-position: center center;
@@ -20,7 +21,6 @@ body {
   transform: rotateZ(-5deg);
   box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
   position: absolute;
-  z-index: 1;
 }
 
 .paper.heart {
@@ -65,29 +65,4 @@ p {
   color: rgb(0,0,100);
   opacity: 0.75;
   user-select: none;
-}
-
-/* ❤️ HEART BUTTON (ADDED ONLY) */
-.heart-btn {
-  position: absolute;
-  width: 220px;
-  height: 200px;
-  background: crimson;
-  border: none;
-  color: white;
-  font-size: 22px;
-  font-family: 'Homemade Apple', cursive;
-  cursor: pointer;
-
-  clip-path: path("M110 190 
-    C-20 110 30 0 110 60 
-    C190 0 240 110 110 190 Z");
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  /* BEHIND FIRST PAPER */
-  z-index: 0;
 }
