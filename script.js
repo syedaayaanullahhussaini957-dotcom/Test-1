@@ -1,45 +1,35 @@
-let highestZ = 1;
-let movedCount = 0;
 const papers = document.querySelectorAll(".paper");
+const lastPaper = document.getElementById("lastPaper");
 const finalHeart = document.getElementById("finalHeart");
 
-class Paper {
-  holding = false;
-  prevX = 0;
-  prevY = 0;
-  x = 0;
-  y = 0;
-  rotation = Math.random() * 30 - 15;
+let activePaper = null;
+let offsetX = 0;
+let offsetY = 0;
+let lastMoved = false;
 
-  init(paper) {
-    paper.addEventListener("mousedown", e => {
-      this.holding = true;
-      paper.style.zIndex = highestZ++;
-      this.prevX = e.clientX;
-      this.prevY = e.clientY;
-    });
+papers.forEach(paper => {
+  paper.addEventListener("mousedown", (e) => {
+    activePaper = paper;
+    offsetX = e.clientX - paper.offsetLeft;
+    offsetY = e.clientY - paper.offsetTop;
 
-    document.addEventListener("mousemove", e => {
-      if (!this.holding) return;
-      this.x += e.clientX - this.prevX;
-      this.y += e.clientY - this.prevY;
-      this.prevX = e.clientX;
-      this.prevY = e.clientY;
-      paper.style.transform = `translate(${this.x}px, ${this.y}px) rotate(${this.rotation}deg)`;
-    });
+    if (paper === lastPaper) {
+      lastMoved = true;
+    }
+  });
+});
 
-    document.addEventListener("mouseup", () => {
-      if (this.holding) movedCount++;
-      this.holding = false;
-      checkHeart();
-    });
-  }
-}
+document.addEventListener("mousemove", (e) => {
+  if (!activePaper) return;
 
-papers.forEach(p => new Paper().init(p));
+  activePaper.style.left = e.clientX - offsetX + "px";
+  activePaper.style.top = e.clientY - offsetY + "px";
+});
 
-function checkHeart() {
-  if (movedCount >= papers.length - 1) {
+document.addEventListener("mouseup", () => {
+  activePaper = null;
+
+  if (lastMoved) {
     finalHeart.classList.add("show");
   }
-}
+});
