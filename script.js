@@ -56,4 +56,39 @@ p {
   user-select: none;
 }
 
-/
+/* ❤️ FINAL HEART BUTTON */
+#finalHeart {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: 130px;
+  height: 130px;
+  background: #ff4d6d;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Zeyada';
+  font-size: 32px;
+  text-align: center;
+  z-index: 0;
+  animation: pulse 1.5s infinite;
+  transition: transform 0.6s ease;
+}
+
+#finalHeart span {
+  font-size: 14px;
+}
+
+#finalHeart.show {
+  transform: translateX(-50%) scale(1);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px #ff4d6d; }
+  50% { box-shadow: 0 0 35px #ff9aa9; }
+  100% { box-shadow: 0 0 10px #ff4d6d; }
+}
