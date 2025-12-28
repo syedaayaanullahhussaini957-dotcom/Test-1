@@ -61,3 +61,32 @@ class Paper {
 document.querySelectorAll(".paper").forEach(paper => {
   new Paper().init(paper);
 });
+// SHOW HEART AFTER ALL PAPERS MOVED
+const heart = document.getElementById("finalHeart");
+const papers = document.querySelectorAll(".paper");
+
+function checkAllMoved() {
+  let moved = 0;
+
+  papers.forEach(paper => {
+    const rect = paper.getBoundingClientRect();
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+
+    if (
+      rect.left < cx - 200 ||
+      rect.left > cx + 200 ||
+      rect.top < cy - 200 ||
+      rect.top > cy + 200
+    ) {
+      moved++;
+    }
+  });
+
+  if (moved === papers.length) {
+    heart.classList.add("show");
+  }
+}
+
+document.addEventListener("mouseup", checkAllMoved);
+document.addEventListener("touchend", checkAllMoved);
