@@ -2,8 +2,6 @@ let highestZ = 1;
 
 class Paper {
   holdingPaper = false;
-  startX = 0;
-  startY = 0;
   prevX = 0;
   prevY = 0;
   currentX = 0;
@@ -11,7 +9,6 @@ class Paper {
   rotation = Math.random() * 30 - 15;
 
   init(paper) {
-
     const start = (x, y) => {
       this.holdingPaper = true;
       paper.style.zIndex = highestZ++;
@@ -54,7 +51,7 @@ document.querySelectorAll(".paper").forEach(paper => {
   new Paper().init(paper);
 });
 
-// ❤️ HEART – SIMPLE & FIXED
+// ❤️ HEART REVEAL
 const lastPaper = document.querySelector(".last-paper");
 const heart = document.getElementById("heartButton");
 
@@ -68,9 +65,5 @@ function revealHeart() {
   heart.style.pointerEvents = "auto";
 }
 
-// Desktop
 lastPaper.addEventListener("mousedown", revealHeart);
-
-// Mobile
 lastPaper.addEventListener("touchstart", revealHeart);
-
