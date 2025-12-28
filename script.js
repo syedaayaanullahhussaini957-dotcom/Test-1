@@ -54,32 +54,23 @@ document.querySelectorAll(".paper").forEach(paper => {
   new Paper().init(paper);
 });
 
-/* ❤️ HEART LOGIC – FINAL & STABLE */
+// ❤️ HEART – SIMPLE & FIXED
 const lastPaper = document.querySelector(".last-paper");
 const heart = document.getElementById("heartButton");
 
-let heartShown = false;
+let shown = false;
 
-// place heart exactly under last paper
-function placeHeart() {
-  const r = lastPaper.getBoundingClientRect();
-  heart.style.left = (r.left + r.width / 2 - 100) + "px";
-  heart.style.top  = (r.top  + r.height / 2 - 100) + "px";
-}
+function revealHeart() {
+  if (shown) return;
+  shown = true;
 
-// show heart only after drag
-function showHeart() {
-  if (heartShown) return;
-  heartShown = true;
-
-  placeHeart();
   heart.style.opacity = "1";
   heart.style.pointerEvents = "auto";
-  heart.style.zIndex = highestZ - 1; // just below last paper
 }
 
-// desktop
-lastPaper.addEventListener("mousedown", showHeart);
+// Desktop
+lastPaper.addEventListener("mousedown", revealHeart);
 
-// mobile
-lastPaper.addEventListener("touchstart", showHeart);
+// Mobile
+lastPaper.addEventListener("touchstart", revealHeart);
+
