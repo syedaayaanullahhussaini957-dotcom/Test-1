@@ -53,3 +53,40 @@ body {
   0%,100% { opacity: 1; }
   50% { opacity: 0.4; }
 }
+/* Existing CSS remains... adding new styles below */
+
+.hidden { display: none !important; }
+
+/* The Heart Button inside the heart paper */
+#heartButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    padding: 10px 20px;
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Short Stack', cursive;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Birthday Animation Styles */
+#birthday-section {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #0b0e14; /* Black background like video */
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#timer-header { text-align: center; color: white; letter-spacing: 2px; font-family: sans-serif; }
+#timer { font-size: 2.5rem; color: #ffb3c1; font-weight: bold; margin-bottom: 20px; }
+#garden { max-width: 100%; height: 450px; }
+#birthday-msg { text-align: center; color: #ffb3c1; font-size: 1.2rem; margin-top: -50px; font-family: 'Zeyada'; }
