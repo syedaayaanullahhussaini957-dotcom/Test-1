@@ -1,35 +1,55 @@
-const papers = document.querySelectorAll(".paper");
-const lastPaper = document.getElementById("lastPaper");
+let highestZ = 1;
+
 const finalHeart = document.getElementById("finalHeart");
+const lastPaper = document.getElementById("lastPaper");
 
-let activePaper = null;
-let offsetX = 0;
-let offsetY = 0;
-let lastMoved = false;
+class Paper {
+  holdingPaper = false;
+  startX = 0;
+  startY = 0;
+  prevX = 0;
+  prevY = 0;
+  currentX = 0;
+  currentY = 0;
+  rotation = Math.random() * 30 - 15;
 
-papers.forEach(paper => {
-  paper.addEventListener("mousedown", (e) => {
-    activePaper = paper;
-    offsetX = e.clientX - paper.offsetLeft;
-    offsetY = e.clientY - paper.offsetTop;
+  init(paper) {
 
-    if (paper === lastPaper) {
-      lastMoved = true;
-    }
-  });
-});
+    const start = (x, y) => {
+      this.holdingPaper = true;
+      paper.style.zIndex = highestZ++;
+      this.startX = x;
+      this.startY = y;
+      this.prevX = x;
+      this.prevY = y;
+    };
 
-document.addEventListener("mousemove", (e) => {
-  if (!activePaper) return;
+    const move = (x, y) => {
+      if (!this.holdingPaper) return;
+      const dx = x - this.prevX;
+      const dy = y - this.prevY;
+      this.currentX += dx;
+      this.currentY += dy;
+      this.prevX = x;
+      this.prevY = y;
 
-  activePaper.style.left = e.clientX - offsetX + "px";
-  activePaper.style.top = e.clientY - offsetY + "px";
-});
+      paper.style.transform =
+        `translate(${this.currentX}px, ${this.currentY}px) rotate(${this.rotation}deg)`;
+    };
 
-document.addEventListener("mouseup", () => {
-  activePaper = null;
+    const end = () => {
+      if (paper === lastPaper) {
+        finalHeart.classList.add("show");
+      }
+      this.holdingPaper = false;
+    };
 
-  if (lastMoved) {
-    finalHeart.classList.add("show");
+    paper.addEventListener("mousedown", e => start(e.clientX, e.clientY));
+    document.addEventListener("mousemove", e => move(e.clientX, e.clientY));
+    document.addEventListener("mouseup", end);
   }
+}
+
+document.querySelectorAll(".paper").forEach(paper => {
+  new Paper().init(paper);
 });
