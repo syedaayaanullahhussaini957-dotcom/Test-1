@@ -1,48 +1,38 @@
 let highestZ = 1;
 
 class Paper {
-  holdingPaper = false;
+  holding = false;
   prevX = 0;
   prevY = 0;
-  currentX = 0;
-  currentY = 0;
+  x = 0;
+  y = 0;
   rotation = Math.random() * 30 - 15;
 
   init(paper) {
 
     const start = (x, y) => {
-      this.holdingPaper = true;
-      paper.style.zIndex = highestZ++;
+      this.holding = true;
+      paper.style.zIndex = ++highestZ;
       this.prevX = x;
       this.prevY = y;
     };
 
     const move = (x, y) => {
-      if (!this.holdingPaper) return;
-
-      const dx = x - this.prevX;
-      const dy = y - this.prevY;
-
-      this.currentX += dx;
-      this.currentY += dy;
-
+      if (!this.holding) return;
+      this.x += x - this.prevX;
+      this.y += y - this.prevY;
       this.prevX = x;
       this.prevY = y;
-
       paper.style.transform =
-        `translate(${this.currentX}px, ${this.currentY}px) rotate(${this.rotation}deg)`;
+        `translate(${this.x}px, ${this.y}px) rotate(${this.rotation}deg)`;
     };
 
-    const end = () => {
-      this.holdingPaper = false;
-    };
+    const end = () => this.holding = false;
 
-    // Mouse
     paper.addEventListener("mousedown", e => start(e.clientX, e.clientY));
     document.addEventListener("mousemove", e => move(e.clientX, e.clientY));
     document.addEventListener("mouseup", end);
 
-    // Touch
     paper.addEventListener("touchstart", e => {
       e.preventDefault();
       start(e.touches[0].clientX, e.touches[0].clientY);
@@ -57,11 +47,4 @@ class Paper {
   }
 }
 
-document.querySelectorAll(".paper").forEach(paper => {
-  new Paper().init(paper);
-});
-
-// ❤️ BUTTON ACTION
-document.getElementById("finalBtn").onclick = () => {
-  alert("I Love You Forever ❤️");
-};
+document.querySelectorAll(".paper").forEach(p => new Paper().init(p));
