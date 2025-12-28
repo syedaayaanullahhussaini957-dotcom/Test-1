@@ -43,7 +43,7 @@ class Paper {
     document.addEventListener("mousemove", e => move(e.clientX, e.clientY));
     document.addEventListener("mouseup", end);
 
-    // TOUCHs
+    // TOUCH
     paper.addEventListener("touchstart", e => {
       e.preventDefault();
       start(e.touches[0].clientX, e.touches[0].clientY);
