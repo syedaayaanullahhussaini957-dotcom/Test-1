@@ -63,3 +63,19 @@ window.addEventListener("load", () => {
   heart.style.left = (r.left + r.width / 2 - 100) + "px";
   heart.style.top = (r.top + r.height / 2 - 100) + "px";
 });
+// ❤️ SHOW HEART ONLY AFTER LAST PAPER MOVES
+const lastPaper = document.querySelector(".last-paper");
+const heart = document.getElementById("heartButton");
+
+let heartShown = false;
+
+lastPaper.addEventListener("mousedown", showHeart);
+lastPaper.addEventListener("touchstart", showHeart);
+
+function showHeart() {
+  if (heartShown) return;
+  heartShown = true;
+
+  heart.style.opacity = "1";
+  heart.style.pointerEvents = "auto";
+}
