@@ -66,29 +66,33 @@ p {
 /* ❤️ HEART BUTTON */
 #heartButton {
   position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
   width: 200px;
   height: 200px;
   background: #ff4d6d;
   border-radius: 50%;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+  justify-content: center;
 
   font-family: 'Zeyada';
   color: white;
-  font-size: 28px;
+  font-size: 26px;
+  text-align: center;
 
   box-shadow: 0 15px 30px rgba(0,0,0,0.4);
   animation: beat 1.2s infinite;
 
-  z-index: -1;
+  opacity: 0;              /* hidden initially */
   pointer-events: none;
-
-  opacity: 0;              /* HIDDEN INITIALLY */
   transition: opacity 0.6s ease;
 }
+
 
 #heartButton span {
   font-size: 22px;
