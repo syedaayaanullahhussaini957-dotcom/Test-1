@@ -1,8 +1,5 @@
 let highestZ = 1;
 
-const finalHeart = document.getElementById("finalHeart");
-const lastPaper = document.getElementById("lastPaper");
-
 class Paper {
   holdingPaper = false;
   startX = 0;
@@ -37,16 +34,23 @@ class Paper {
         `translate(${this.currentX}px, ${this.currentY}px) rotate(${this.rotation}deg)`;
     };
 
-    const end = () => {
-      if (paper === lastPaper) {
-        finalHeart.classList.add("show");
-      }
-      this.holdingPaper = false;
-    };
+    const end = () => this.holdingPaper = false;
 
     paper.addEventListener("mousedown", e => start(e.clientX, e.clientY));
     document.addEventListener("mousemove", e => move(e.clientX, e.clientY));
     document.addEventListener("mouseup", end);
+
+    paper.addEventListener("touchstart", e => {
+      e.preventDefault();
+      start(e.touches[0].clientX, e.touches[0].clientY);
+    });
+
+    document.addEventListener("touchmove", e => {
+      e.preventDefault();
+      move(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: false });
+
+    document.addEventListener("touchend", end);
   }
 }
 
