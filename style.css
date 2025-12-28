@@ -73,3 +73,38 @@ p {
   
   // filter: drop-shadow(2px 1.5px 1px rgba(0,0,105,0.9));
 }
+#finalHeart {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+#finalHeart.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#heartBtn {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: none;
+  background: radial-gradient(circle, #ff4d6d, #ff0033);
+  color: white;
+  font-size: 1.2rem;
+  font-family: 'Zeyada';
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(255,0,80,0.7);
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
