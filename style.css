@@ -5,64 +5,30 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
   background-size: 1000px;
-  background-position: center;
-  overflow: hidden;
+  background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
+  background-position: center center;
   touch-action: none;
+  overflow: hidden;
 }
 
-/* ❤️ Heart Button */
-.heart-btn {
-  position: absolute;
-  width: 220px;
-  height: 200px;
-  background: red;
-  border: none;
-  color: white;
-  font-size: 22px;
-  font-family: 'Homemade Apple', cursive;
-  cursor: pointer;
-  z-index: 0;
-
-  clip-path: path("M110 190 
-    C-20 110 30 0 110 60 
-    C190 0 240 110 110 190 Z");
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-/* 📄 Papers */
 .paper {
-  position: absolute;
-  padding: 20px 100px;
-  background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg");
+  background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
   background-size: 500px;
+  background-position: center center;
+  padding: 20px 100px;
   transform: rotateZ(-5deg);
-  box-shadow: 1px 15px 20px rgba(0,0,0,0.5);
+  box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
+  position: absolute;
   z-index: 1;
 }
 
 .paper.heart {
+  position: relative;
   width: 200px;
   height: 200px;
   padding: 0;
   border-radius: 50%;
-}
-
-.paper.heart::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 150px;
-  opacity: 0.6;
 }
 
 .paper.image {
@@ -74,9 +40,23 @@ body {
 }
 
 img {
-  width: 100%;
   max-height: 200px;
+  width: 100%;
   user-select: none;
+}
+
+.paper.heart::after {
+  content: "";
+  background-image: url('https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png');
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: 150px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.6;
 }
 
 p {
@@ -85,4 +65,29 @@ p {
   color: rgb(0,0,100);
   opacity: 0.75;
   user-select: none;
+}
+
+/* ❤️ HEART BUTTON (ADDED ONLY) */
+.heart-btn {
+  position: absolute;
+  width: 220px;
+  height: 200px;
+  background: crimson;
+  border: none;
+  color: white;
+  font-size: 22px;
+  font-family: 'Homemade Apple', cursive;
+  cursor: pointer;
+
+  clip-path: path("M110 190 
+    C-20 110 30 0 110 60 
+    C190 0 240 110 110 190 Z");
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* BEHIND FIRST PAPER */
+  z-index: 0;
 }
